@@ -3,8 +3,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Col, Row, Form, Button } from 'react-bootstrap';
-import { AddNewPage } from 'Components/slices/content/thunk'; // <-- Update your thunk path
-import { GetAllCategory } from 'Components/slices/category/thunk';
 import { AddNewUNI } from 'Components/slices/universitySlice/thunk';
 
 const UniversitiesForm = () => {
@@ -18,7 +16,7 @@ const UniversitiesForm = () => {
 	}));
 
 	useEffect(() => {
-		dispatch(GetAllCategory());
+		// dispatch(GetAllCategory());
 		editorRef.current = {
 			CKEditor: require('@ckeditor/ckeditor5-react').CKEditor,
 			ClassicEditor: require('@ckeditor/ckeditor5-build-classic'),
