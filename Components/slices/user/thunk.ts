@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import {
   baseURL,
-  G
+  
 } from "Components/helpers/url_helper";
 import axios from "axios";
 import {
