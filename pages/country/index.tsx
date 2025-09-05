@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import Head from 'next/head';
 import Layout from '@common/Layout';
-import UniversitiesForm from 'Components/pages_componets/universities/form';
+import CountryForm from 'Components/pages_componets/countries/form';
 
 const index = () => {
 	return (
@@ -10,7 +10,7 @@ const index = () => {
 				<title>Add Universties | Vidhyaroute -Admin </title>
 			</Head>
 			<div className='page-content'>
-				<UniversitiesForm />
+				<CountryForm />
 				{/* <HubsTable /> */}
 			</div>
 		</React.Fragment>
