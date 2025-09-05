@@ -6,7 +6,6 @@ import {
   baseURL,
   GET_ALL_SUB_CATEGORY_BY_CATID,
   GET_ALL_SUB_CATEGORY,
-  EDIT_CATEGORY,
 } from "Components/helpers/url_helper";
 import axios from "axios";
 import {
@@ -127,7 +126,7 @@ export const EditCategory =
 
       const options = {
         method: "PATCH",
-        url: `${baseURL}${EDIT_CATEGORY}/${id}`,
+        url: `${baseURL}`,
         headers: {
           "Content-Type": "multipart/form-data",
         },
