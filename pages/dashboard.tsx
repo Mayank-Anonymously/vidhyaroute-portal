@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
 import Head from 'next/head';
 import Layout from '@common/Layout';
-import MapComponent from 'Components/pages_componets/location/maps';
 const Dashboard = () => {
 	return (
 		<React.Fragment>
