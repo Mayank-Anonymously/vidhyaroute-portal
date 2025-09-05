@@ -1,4 +1,4 @@
-import { UPLOAD_BANNER, baseURL,GET_ALL_BANNERS,UPDATE_BANNER,DELETE_BANNER,UPDATE_BANNER_STATUS } from "Components/helpers/url_helper";
+import { baseURL,} from "Components/helpers/url_helper";
 import { api_is_error, api_is_loading, api_is_success } from "./reducer";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -7,7 +7,7 @@ export const GetAllBanner = () => async (dispatch: any) => {
   try {
     const options = {
       method: "GET",
-      url: `${baseURL}${GET_ALL_BANNERS}`,
+      url: `${baseURL}`,
     };
     const apifetch = await axios.request(options);
     const response: any = await apifetch;
@@ -22,12 +22,11 @@ export const GetAllBanner = () => async (dispatch: any) => {
 
 export const Uploadbanner = (values: any) => async (dispatch: any) => {
   try {
-    console.log(values,"dt")
     const form = new FormData();
     form.append("upload", values.image);
     const options = {
       method: "POST",
-      url: `${baseURL}${UPLOAD_BANNER}`,
+      url: `${baseURL}`,
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -71,7 +70,7 @@ export const editBanner = (id: any, values: any) => async (dispatch: any) => {
   form.append("upload", values.image);
   const options = {
     method: "PATCH",
-    url: `${baseURL}${UPDATE_BANNER}${id}`,
+    url: `${baseURL}`,
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -102,7 +101,7 @@ export const editBanner = (id: any, values: any) => async (dispatch: any) => {
 export const deleteBanner = (id: any) => async (dispatch: any) => {
   try {
     const options = {
-      url: `${baseURL}${DELETE_BANNER}${id}`,
+      url: `${baseURL}`,
       method: "GET",
     };
     const fetchapi = await axios.request(options);
@@ -133,7 +132,7 @@ export const updateBannerStatus =
     console.log(id,"aewrgwrtg")
     const options = {
       method: "PATCH",
-      url: `${baseURL}${UPDATE_BANNER_STATUS}${id}`,
+      url: `${baseURL}`,
       headers: {
         "Content-Type": "application/json",
       },
