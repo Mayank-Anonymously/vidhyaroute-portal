@@ -40,7 +40,6 @@ const CountryForm = () => {
 			meta_title: Yup.string().required('Meta title is required.'),
 			meta_keywords: Yup.string().required('Meta keywords are required.'),
 			meta_description: Yup.string().required('Meta description is required.'),
-			category: Yup.string().required('Category is required.'),
 			page_url: Yup.string().required('Page URL is required.'),
 			page_image_tag: Yup.string().required('Page image tag is required.'),
 			title: Yup.string().required('Title is required.'),
