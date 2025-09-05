@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import {
   baseURL,
-  GETUSER
+  G
 } from "Components/helpers/url_helper";
 import axios from "axios";
 import {
@@ -12,21 +12,7 @@ import {
 } from "./reducer";
 
 export const GetAllUser = () => async (dispatch: any) => {
-  try {
-    const options = {
-      method: "GET",
-      url: `${baseURL}${GETUSER}`,
-    };
-    const apifetch = await axios.request(options);
-    const response: any = await apifetch;
-
-    dispatch(api_is_success(response));
-
-    return response;
-  } catch (error) {
-    dispatch(api_is_error(error));
-    return error;
-  }
+  
 };
 
 // export const GetAllCategory = () => async (dispatch: any) => {

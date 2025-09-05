@@ -4,7 +4,7 @@ import {
   UPDATE_ORDER,
   ASSIGN_ORDER,
   GET_ALL_SUBSCRIPTION,
-  CHECK_WALLET_REQUEST,
+
 } from "Components/helpers/url_helper";
 import axios from "axios";
 import {
@@ -108,25 +108,7 @@ export const AssigneOrder =
   };
 
 export const fetchRequestforRecharge = () => async (dispatch: any) => {
-  try {
-    const options = {
-      method: "GET",
-      url: `${baseURL}${CHECK_WALLET_REQUEST}`,
-    };
-    const apifetch = await axios.request(options);
-    const response: any = await apifetch;
-    console.log(response);
-    if (response.baseResponse.status === 1) {
-      dispatch(recharge_request(response.response));
-    } else {
-      console.log("unable to fetch");
-    }
-    return response;
-  } catch (error) {
-    console.log(error);
-
-    return error;
-  }
+  
 };
 
 export const OrderByStatus = (status: any) => async (dispatch: any) => {
