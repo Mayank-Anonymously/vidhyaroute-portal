@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Col, Row, Form, Button } from 'react-bootstrap';
-import { AddNewPage } from 'Components/slices/content/thunk'; // <-- Update your thunk path
+import { AddNewPage } from 'Components/slices/content/thunk';
 
 const DynamicPageForm = () => {
 	const dispatch: any = useDispatch();
@@ -138,10 +138,7 @@ const DynamicPageForm = () => {
 								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
 								disabled
-
-
-
-								/>
+							/>
 							<Form.Control.Feedback type='invalid'>
 								{formik.errors.category}
 							</Form.Control.Feedback>

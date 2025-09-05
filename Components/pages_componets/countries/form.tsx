@@ -3,7 +3,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Col, Row, Form, Button } from 'react-bootstrap';
-import { AddNewPage } from 'Components/slices/content/thunk'; // <-- Update your thunk path
 import { AddNewCNT } from 'Components/slices/countrySlice/thunk';
 
 const CountryForm = () => {
