@@ -1,8 +1,8 @@
-// LIVE;
-// export const baseURL = "http://192.168.1.13:3202/api/v1";
-// export const imagebaseURL = "http://192.168.1.13:3202/resources/";
+// LOCAL;
+// export const baseURL = "http://192.168.1.2:3202/api/v1";
+// export const imagebaseURL = "http://192.168.1.2:3202/resources/";
 
-// // // // LIVE;
+// // // // // LIVE;
 export const baseURL = "https://api.vidhyaroute.com/api/v1";
 export const imagebaseURL = "https://api.vidhyaroute.com/resources/";
 
@@ -147,20 +147,20 @@ export const ADD_NEW_CITY = "/city/add-new-city";
 /* CITY */
 
 /* CONTENT */
-export const GET_ALL_CONTENT = "/pages/add";
+export const GET_ALL_CONTENT = "/pages/all";
 export const ADD_NEW_CONTENT = "/pages/add";
 /* CONTENT */
 
 /* CONTENT */
-export const GET_ALL_UNI = "/pages/add";
-export const ADD_NEW_UNI = "/pages/add";
+export const GET_ALL_UNI = "/university/all";
+export const ADD_NEW_UNI = "/university/add";
 /* CONTENT */
 /* CONTENT */
-export const GET_ALL_COUNTRY = "/pages/add";
-export const ADD_NEW_COUNTRY = "/pages/add";
+export const GET_ALL_COUNTRY = "/countires/all";
+export const ADD_NEW_COUNTRY = "/countires/add";
 /* CONTENT */
 
 /* CONTENT */
-export const GET_ALL_SERVICE = "/pages/add";
-export const ADD_NEW_SERVICE = "/pages/add";
+export const GET_ALL_SERVICE = "/services/all";
+export const ADD_NEW_SERVICE = "/services/add";
 /* CONTENT */

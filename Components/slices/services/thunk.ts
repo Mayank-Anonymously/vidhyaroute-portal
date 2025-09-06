@@ -1,6 +1,7 @@
 import {
   ADD_NEW_CONTENT,
   ADD_NEW_HUB,
+  ADD_NEW_SERVICE,
   ADD_NEW_UNI,
   GET_ALL_CONTENT,
   GET_ALL_HUB,
@@ -10,7 +11,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { api_is_success } from "./reducer";
 
-export const AddNewUNI = (values: any) => async (dispatch: any) => {
+export const AddNewService = (values: any) => async (dispatch: any) => {
 
   try {
     const formData = new FormData();
@@ -25,7 +26,7 @@ export const AddNewUNI = (values: any) => async (dispatch: any) => {
     formData.append("file",  values.image);
 
 
-    const resp: any = await axios.post(`${baseURL}${ADD_NEW_UNI}`, formData, {
+    const resp: any = await axios.post(`${baseURL}${ADD_NEW_SERVICE}`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 

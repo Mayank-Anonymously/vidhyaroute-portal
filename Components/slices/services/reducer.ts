@@ -7,8 +7,8 @@ const initialState = {
   selectedcontent: <any>[],
 };
 
-const country = createSlice({
-  name: "content",
+const service = createSlice({
+  name: "service",
   initialState,
   reducers: {
     api_is_loading(state, action) {
@@ -35,11 +35,11 @@ const country = createSlice({
 });
 
 export const {
-  api_is_loading,
+  api_is_loading,   
   api_is_error,
   api_is_success,
   is_selected_success,
-} = country.actions;
+} = service.actions;
 
-export default country.reducer;
+export default service.reducer;
           

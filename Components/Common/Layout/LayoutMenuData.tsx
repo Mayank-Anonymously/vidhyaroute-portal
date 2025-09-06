@@ -6,7 +6,7 @@ const Navdata = () => {
 	const [isAuth, setIsAuth] = useState(false);
 	const [universities, setUniversities] = useState(false);
 	const [country, setCountry] = useState(false);
-	const [bottleBreak, setBottle] = useState(false);
+	const [service, setService] = useState(false);
 	const [vendor, setVendor] = useState(false);
 	const [user, setUser] = useState(false);
 	const [vacations, setVacations] = useState(false);
@@ -141,7 +141,7 @@ const Navdata = () => {
 		{
 			id: 'blog',
 			label: 'blog',
-			icon: 'bi bi-person-circle',
+			icon: 'bi bi-substack',
 			link: '/#',
 			click: function (e: any) {
 				e.preventDefault();
@@ -153,7 +153,7 @@ const Navdata = () => {
 			subItems: [
 				{
 					id: 'blog',
-					label: 'blog',
+					label: 'Form',
 					link: '/blog',
 					click: function (e: any) {
 						e.preventDefault();
@@ -165,8 +165,8 @@ const Navdata = () => {
 		},
 		{
 			id: 'universities',
-			label: 'universities',
-			icon: 'bi bi-person-circle',
+			label: 'University',
+			icon: 'bi bi-mortarboard',
 			link: '/#',
 			click: function (e: any) {
 				e.preventDefault();
@@ -178,7 +178,7 @@ const Navdata = () => {
 			subItems: [
 				{
 					id: 'universities',
-					label: 'universities',
+					label: 'Form',
 					link: '/universities',
 					click: function (e: any) {
 						e.preventDefault();
@@ -189,8 +189,8 @@ const Navdata = () => {
 		},
 		{
 			id: 'country',
-			label: 'country',
-			icon: 'bi bi-person-circle',
+			label: 'Country',
+			icon: 'bi bi-globe-americas',
 			link: '/#',
 			click: function (e: any) {
 				e.preventDefault();
@@ -202,12 +202,36 @@ const Navdata = () => {
 			subItems: [
 				{
 					id: 'country',
-					label: 'country',
+					label: 'Form',
 					link: '/country',
 					click: function (e: any) {
 						e.preventDefault();
 					},
 					parentId: 'country',
+				},
+			],
+		},
+		{
+			id: 'service',
+			label: 'Services',
+			icon: 'bi bi-stack',
+			link: '/#',
+			click: function (e: any) {
+				e.preventDefault();
+				setService(!service);
+				setIsCurrentState('service');
+				updateIconSidebar(e);
+			},
+			stateVariables: service,
+			subItems: [
+				{
+					id: 'service',
+					label: 'Form',
+					link: '/services',
+					click: function (e: any) {
+						e.preventDefault();
+					},
+					parentId: 'service',
 				},
 			],
 		},

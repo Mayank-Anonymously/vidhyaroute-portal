@@ -37,7 +37,7 @@ import sliderSlices from "./slider/reducer";
 import bannerSlices from './banner/reducer';
 import userVacationsSlice from './user_vacations/reducer'
 import offerHeadingSlices from './offer_heading/reducer'
-
+import country from "./countrySlice/reducer"
 const combinedReducer = combineReducers({
   Layout: LayoutReducer,
   Calendar: calendarSlice,
@@ -65,7 +65,8 @@ const combinedReducer = combineReducers({
   banner:bannerSlices,
   silder:sliderSlices,
   uservacations:userVacationsSlice,
-  offerheadings:offerHeadingSlices
+  offerheadings:offerHeadingSlices,
+  countries : country
 });
 
 const reducer = (state: any, action: AnyAction) => {

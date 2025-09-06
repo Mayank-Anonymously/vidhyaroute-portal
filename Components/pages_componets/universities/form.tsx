@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Col, Row, Form, Button } from 'react-bootstrap';
 import { AddNewUNI } from 'Components/slices/universitySlice/thunk';
+import { GettAllCNT } from 'Components/slices/countrySlice/thunk';
+import { useDropzone } from 'react-dropzone';
 
 const UniversitiesForm = () => {
 	const dispatch: any = useDispatch();
@@ -11,18 +13,31 @@ const UniversitiesForm = () => {
 	const [editor, setEditor] = useState(false);
 	const { CKEditor, ClassicEditor }: any = editorRef.current || {};
 
-	const { category } = useSelector((state: any) => ({
-		category: state.CategorySlice.categorydata,
+	const { contentData } = useSelector((state: any) => ({
+		contentData: state.countries.contentData,
 	}));
 
+	// Dropzone handler for single image
+	const onDrop = useCallback((acceptedFiles: any) => {
+		if (acceptedFiles.length > 0) {
+			formik.setFieldValue('image', acceptedFiles[0]); // Only one image
+		}
+	}, []);
+
+	const { getRootProps, getInputProps, isDragActive } = useDropzone({
+		onDrop,
+		accept: { 'image/*': [] },
+		multiple: false,
+	});
+
 	useEffect(() => {
-		// dispatch(GetAllCategory());
+		dispatch(GettAllCNT());
 		editorRef.current = {
 			CKEditor: require('@ckeditor/ckeditor5-react').CKEditor,
 			ClassicEditor: require('@ckeditor/ckeditor5-build-classic'),
 		};
 		setEditor(true);
-	}, []);
+	}, [dispatch]);
 
 	const formik: any = useFormik({
 		enableReinitialize: true,
@@ -35,6 +50,7 @@ const UniversitiesForm = () => {
 			page_image_tag: '',
 			title: '',
 			page_content: '',
+			image: null,
 		},
 		validationSchema: Yup.object({
 			meta_title: Yup.string().required('Meta title is required.'),
@@ -45,8 +61,10 @@ const UniversitiesForm = () => {
 			page_image_tag: Yup.string().required('Page image tag is required.'),
 			title: Yup.string().required('Title is required.'),
 			page_content: Yup.string().required('Page content is required.'),
+			image: Yup.mixed().required('Image is required.'),
 		}),
 		onSubmit: (values) => {
+			console.log(values);
 			dispatch(AddNewUNI(values));
 			formik.resetForm();
 		},
@@ -62,8 +80,44 @@ const UniversitiesForm = () => {
 					onSubmit={(e) => {
 						e.preventDefault();
 						formik.handleSubmit();
-						return false;
 					}}>
+					{/* Upload Image Section */}
+					<Row className='mb-3'>
+						<Col md={6}>
+							<Form.Label>Upload Image</Form.Label>
+							<div
+								{...getRootProps()}
+								className='border p-3 text-center'
+								style={{ cursor: 'pointer' }}>
+								<input {...getInputProps()} />
+								<p>
+									{isDragActive
+										? 'Drop the image here ...'
+										: "Drag 'n' drop an image here, or click to select"}
+								</p>
+							</div>
+							{formik.touched.image && formik.errors.image && (
+								<div className='text-danger mt-1'>{formik.errors.image}</div>
+							)}
+
+							{formik.values.image && (
+								<div className='mt-2'>
+									<img
+										src={
+											formik.values.image instanceof File
+												? URL.createObjectURL(formik.values.image)
+												: formik.values.image
+										}
+										alt='preview'
+										className='img-thumbnail'
+										width='150'
+									/>
+								</div>
+							)}
+						</Col>
+					</Row>
+
+					{/* Meta Fields */}
 					<Row className='mb-3'>
 						<Col>
 							<Form.Label>Meta Title</Form.Label>
@@ -116,6 +170,30 @@ const UniversitiesForm = () => {
 								{formik.errors.meta_description}
 							</Form.Control.Feedback>
 						</Col>
+					</Row>
+
+					<Row className='mb-3'>
+						<Col>
+							<Form.Label>Category</Form.Label>
+							<Form.Select
+								name='category'
+								value={formik.values.category}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								isInvalid={formik.touched.category && !!formik.errors.category}>
+								<option value=''>Select Category</option>
+								{contentData?.map((cnt: any) => (
+									<option
+										key={cnt._id}
+										value={cnt._id}>
+										{cnt.title}
+									</option>
+								))}
+							</Form.Select>
+							<Form.Control.Feedback type='invalid'>
+								{formik.errors.category}
+							</Form.Control.Feedback>
+						</Col>
 						<Col>
 							<Form.Label>Page URL</Form.Label>
 							<Form.Control
@@ -133,29 +211,7 @@ const UniversitiesForm = () => {
 
 					<Row className='mb-3'>
 						<Col>
-							<Form.Label>Category</Form.Label>
-							<Form.Select
-								name='category'
-								value={formik.values.category}
-								onChange={formik.handleChange}
-								onBlur={formik.handleBlur}
-								isInvalid={formik.touched.category && !!formik.errors.category}>
-								<option value=''>Select Category</option>
-								{category?.map((cat: any) => (
-									<option
-										key={cat.id}
-										value={cat.id}>
-										{cat.name}
-									</option>
-								))}
-							</Form.Select>
-							<Form.Control.Feedback type='invalid'>
-								{formik.errors.category}
-							</Form.Control.Feedback>
-						</Col>
-
-						<Col>
-							<Form.Label>Image Tag</Form.Label>
+							<Form.Label>Page Image Tag</Form.Label>
 							<Form.Control
 								name='page_image_tag'
 								value={formik.values.page_image_tag}
@@ -170,9 +226,6 @@ const UniversitiesForm = () => {
 								{formik.errors.page_image_tag}
 							</Form.Control.Feedback>
 						</Col>
-					</Row>
-
-					<Row className='mb-3'>
 						<Col>
 							<Form.Label>Title</Form.Label>
 							<Form.Control
@@ -188,6 +241,7 @@ const UniversitiesForm = () => {
 						</Col>
 					</Row>
 
+					{/* Page Content */}
 					<Row>
 						<Col>
 							<Form.Label>Page Content</Form.Label>
