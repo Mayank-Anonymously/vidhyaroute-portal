@@ -12,7 +12,7 @@ import { api_is_success } from "./reducer";
 
 export const AddNewUNI = (values: any) => async (dispatch: any) => {
 
-  // try {
+  try {
     const formData = new FormData();
     formData.append("title", values.title);
     formData.append("meta_title", values.meta_title);
@@ -28,7 +28,6 @@ export const AddNewUNI = (values: any) => async (dispatch: any) => {
     const resp: any = await axios.post(`${baseURL}${ADD_NEW_UNI}`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
-console.log("resp")
     const { baseResponse } = resp;
     if (baseResponse.status === 1) {
       Swal.fire({
@@ -37,13 +36,13 @@ console.log("resp")
         icon: "success",
       });
     }
-  // } catch (error: any) {
-  //   Swal.fire({
-  //     title: "Error occured",
-  //     text: error.message || error,
-  //     icon: "error",
-  //   });
-  // }
+  } catch (error: any) {
+    Swal.fire({
+      title: "Error occured",
+      text: error.message || error,
+      icon: "error",
+    });
+  }
 };
 
 
