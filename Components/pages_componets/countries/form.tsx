@@ -27,6 +27,7 @@ const CountryForm = () => {
 	const formik: any = useFormik({
 		enableReinitialize: true,
 		initialValues: {
+			country_name: '', // ✅ New field
 			meta_title: '',
 			meta_keywords: '',
 			meta_description: '',
@@ -35,6 +36,7 @@ const CountryForm = () => {
 			page_content: '',
 		},
 		validationSchema: Yup.object({
+			country_name: Yup.string().required('Country name is required.'), // ✅ Validation
 			meta_title: Yup.string().required('Meta title is required.'),
 			meta_keywords: Yup.string().required('Meta keywords are required.'),
 			meta_description: Yup.string().required('Meta description is required.'),
@@ -59,6 +61,26 @@ const CountryForm = () => {
 						e.preventDefault();
 						formik.handleSubmit();
 					}}>
+					{/* ✅ Country Name Field */}
+					<Row className='mb-3'>
+						<Col>
+							<Form.Label>Country Name</Form.Label>
+							<Form.Control
+								name='country_name'
+								value={formik.values.country_name}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								isInvalid={
+									formik.touched.country_name && !!formik.errors.country_name
+								}
+							/>
+							<Form.Control.Feedback type='invalid'>
+								{formik.errors.country_name}
+							</Form.Control.Feedback>
+						</Col>
+					</Row>
+
+					{/* Meta Fields */}
 					<Row className='mb-3'>
 						<Col>
 							<Form.Label>Meta Title</Form.Label>

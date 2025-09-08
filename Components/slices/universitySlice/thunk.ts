@@ -23,7 +23,22 @@ export const AddNewUNI = (values: any) => async (dispatch: any) => {
     formData.append("page_image_tag", values.page_image_tag);
     formData.append("page_content", values.page_content);
     formData.append("file",  values.image);
+// ✅ Newly added fields
+formData.append("name", values.name);
+formData.append("location", values.location);
+formData.append("ranking", values.ranking);
+formData.append("description", values.description);
 
+// For arrays like highlights & popularPrograms → stringify them
+if (values.highlights && values.highlights.length > 0) {
+  formData.append("highlights", JSON.stringify(values.highlights));
+}
+
+formData.append("tuitionRange", values.tuitionRange);
+
+if (values.popularPrograms && values.popularPrograms.length > 0) {
+  formData.append("popularPrograms", JSON.stringify(values.popularPrograms));
+}
 
     const resp: any = await axios.post(`${baseURL}${ADD_NEW_UNI}`, formData, {
       headers: { "Content-Type": "multipart/form-data" },

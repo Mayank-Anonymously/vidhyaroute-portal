@@ -25,6 +25,8 @@ export const AddNewCNT = (values: any) => async (dispatch: any) => {
       page_url: values.page_url,                     // required
       page_image_tag: values.page_image_tag,         // required
       page_content: values.page_content,             // required
+      country_name: values.country_name,             // required
+
     },
     };
     const fetchapi = await axios.request(data);

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, Col, Row, Form, Button } from 'react-bootstrap';
+import { Card, Col, Row, Form, Button, Badge } from 'react-bootstrap';
 import { AddNewUNI } from 'Components/slices/universitySlice/thunk';
 import { GettAllCNT } from 'Components/slices/countrySlice/thunk';
 import { useDropzone } from 'react-dropzone';
@@ -17,10 +17,10 @@ const UniversitiesForm = () => {
 		contentData: state.countries.contentData,
 	}));
 
-	// Dropzone handler for single image
+	// Dropzone handler
 	const onDrop = useCallback((acceptedFiles: any) => {
 		if (acceptedFiles.length > 0) {
-			formik.setFieldValue('image', acceptedFiles[0]); // Only one image
+			formik.setFieldValue('image', acceptedFiles[0]);
 		}
 	}, []);
 
@@ -42,6 +42,7 @@ const UniversitiesForm = () => {
 	const formik: any = useFormik({
 		enableReinitialize: true,
 		initialValues: {
+			// 🔹 SEO fields
 			meta_title: '',
 			meta_keywords: '',
 			meta_description: '',
@@ -51,6 +52,17 @@ const UniversitiesForm = () => {
 			title: '',
 			page_content: '',
 			image: null,
+
+			// 🔹 New University fields
+			name: '',
+			location: '',
+			ranking: '',
+			description: '',
+			tuitionRange: '',
+			highlights: [],
+			popularPrograms: [],
+			highlightInput: '',
+			programInput: '',
 		},
 		validationSchema: Yup.object({
 			meta_title: Yup.string().required('Meta title is required.'),
@@ -62,13 +74,51 @@ const UniversitiesForm = () => {
 			title: Yup.string().required('Title is required.'),
 			page_content: Yup.string().required('Page content is required.'),
 			image: Yup.mixed().required('Image is required.'),
+
+			// New fields validation
+			name: Yup.string().required('University name is required.'),
+			location: Yup.string().required('Location is required.'),
+			ranking: Yup.string(),
+			description: Yup.string(),
+			tuitionRange: Yup.string(),
 		}),
 		onSubmit: (values) => {
-			console.log(values);
-			dispatch(AddNewUNI(values));
+			const { highlightInput, programInput, ...rest } = values; // remove temp inputs
+			dispatch(AddNewUNI(rest));
 			formik.resetForm();
 		},
 	});
+
+	// Chip Handlers
+	const addHighlight = () => {
+		if (formik.values.highlightInput.trim() !== '') {
+			formik.setFieldValue('highlights', [
+				...formik.values.highlights,
+				formik.values.highlightInput.trim(),
+			]);
+			formik.setFieldValue('highlightInput', '');
+		}
+	};
+	const removeHighlight = (index: number) => {
+		const updated = [...formik.values.highlights];
+		updated.splice(index, 1);
+		formik.setFieldValue('highlights', updated);
+	};
+
+	const addProgram = () => {
+		if (formik.values.programInput.trim() !== '') {
+			formik.setFieldValue('popularPrograms', [
+				...formik.values.popularPrograms,
+				formik.values.programInput.trim(),
+			]);
+			formik.setFieldValue('programInput', '');
+		}
+	};
+	const removeProgram = (index: number) => {
+		const updated = [...formik.values.popularPrograms];
+		updated.splice(index, 1);
+		formik.setFieldValue('popularPrograms', updated);
+	};
 
 	return (
 		<div className='container-fluid'>
@@ -114,6 +164,150 @@ const UniversitiesForm = () => {
 									/>
 								</div>
 							)}
+						</Col>
+					</Row>
+
+					{/* University Info */}
+					<Row className='mb-3'>
+						<Col>
+							<Form.Label>University Name</Form.Label>
+							<Form.Control
+								name='name'
+								value={formik.values.name}
+								onChange={formik.handleChange}
+								isInvalid={formik.touched.name && !!formik.errors.name}
+							/>
+							<Form.Control.Feedback type='invalid'>
+								{formik.errors.name}
+							</Form.Control.Feedback>
+						</Col>
+						<Col>
+							<Form.Label>Location</Form.Label>
+							<Form.Control
+								name='location'
+								value={formik.values.location}
+								onChange={formik.handleChange}
+								isInvalid={formik.touched.location && !!formik.errors.location}
+							/>
+							<Form.Control.Feedback type='invalid'>
+								{formik.errors.location}
+							</Form.Control.Feedback>
+						</Col>
+					</Row>
+
+					<Row className='mb-3'>
+						<Col>
+							<Form.Label>Ranking</Form.Label>
+							<Form.Control
+								name='ranking'
+								value={formik.values.ranking}
+								onChange={formik.handleChange}
+							/>
+						</Col>
+						<Col>
+							<Form.Label>Tuition Range</Form.Label>
+							<Form.Control
+								name='tuitionRange'
+								value={formik.values.tuitionRange}
+								onChange={formik.handleChange}
+							/>
+						</Col>
+					</Row>
+
+					<Row className='mb-3'>
+						<Col>
+							<Form.Label>Description</Form.Label>
+							<Form.Control
+								as='textarea'
+								rows={3}
+								name='description'
+								value={formik.values.description}
+								onChange={formik.handleChange}
+							/>
+						</Col>
+					</Row>
+
+					{/* Highlights */}
+					<Row className='mb-3'>
+						<Col>
+							<Form.Label>Highlights</Form.Label>
+							<div className='d-flex gap-2'>
+								<Form.Control
+									name='highlightInput'
+									value={formik.values.highlightInput}
+									onChange={formik.handleChange}
+									onKeyDown={(e) => {
+										if (e.key === 'Enter') {
+											e.preventDefault();
+											addHighlight();
+										}
+									}}
+									placeholder='Add highlight and press Enter'
+								/>
+								<Button
+									type='button'
+									onClick={addHighlight}>
+									Add
+								</Button>
+							</div>
+							<div className='mt-2'>
+								{formik.values.highlights.map((item: string, index: number) => (
+									<Badge
+										key={index}
+										bg='secondary'
+										className='me-2 p-2'>
+										{item}{' '}
+										<span
+											style={{ cursor: 'pointer' }}
+											onClick={() => removeHighlight(index)}>
+											&times;
+										</span>
+									</Badge>
+								))}
+							</div>
+						</Col>
+					</Row>
+
+					{/* Programs */}
+					<Row className='mb-3'>
+						<Col>
+							<Form.Label>Popular Programs</Form.Label>
+							<div className='d-flex gap-2'>
+								<Form.Control
+									name='programInput'
+									value={formik.values.programInput}
+									onChange={formik.handleChange}
+									onKeyDown={(e) => {
+										if (e.key === 'Enter') {
+											e.preventDefault();
+											addProgram();
+										}
+									}}
+									placeholder='Add program and press Enter'
+								/>
+								<Button
+									type='button'
+									onClick={addProgram}>
+									Add
+								</Button>
+							</div>
+							<div className='mt-2'>
+								{formik.values.popularPrograms.map(
+									(item: string, index: number) => (
+										<Badge
+											key={index}
+											bg='info'
+											className='me-2 p-2'>
+											{item}{' '}
+											<span
+												style={{ cursor: 'pointer' }}
+												onClick={() => removeProgram(index)}>
+												&times;
+											</span>
+										</Badge>
+									)
+								)}
+							</div>
 						</Col>
 					</Row>
 
