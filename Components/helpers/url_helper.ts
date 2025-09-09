@@ -156,8 +156,8 @@ export const GET_ALL_UNI = "/university/all";
 export const ADD_NEW_UNI = "/university/add";
 /* CONTENT */
 /* CONTENT */
-export const GET_ALL_COUNTRY = "/countires/all";
-export const ADD_NEW_COUNTRY = "/countires/add";
+export const GET_ALL_COUNTRY = "/countries/all";
+export const ADD_NEW_COUNTRY = "/countries/add";
 /* CONTENT */
 
 /* CONTENT */
