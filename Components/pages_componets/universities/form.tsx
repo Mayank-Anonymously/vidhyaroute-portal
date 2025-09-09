@@ -368,14 +368,14 @@ const UniversitiesForm = () => {
 
 					<Row className='mb-3'>
 						<Col>
-							<Form.Label>Category</Form.Label>
+							<Form.Label>Country</Form.Label>
 							<Form.Select
 								name='category'
 								value={formik.values.category}
 								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
 								isInvalid={formik.touched.category && !!formik.errors.category}>
-								<option value=''>Select Category</option>
+								<option value=''>Select Country</option>
 								{contentData?.map((cnt: any) => (
 									<option
 										key={cnt._id}
