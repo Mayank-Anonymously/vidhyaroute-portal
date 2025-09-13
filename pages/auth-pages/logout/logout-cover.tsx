@@ -39,7 +39,8 @@ const LogoutCover = () => {
 										<h5 className='fs-18'>You are Logged Out</h5>
 										<p className='text-muted'>
 											Thank you for using{' '}
-											<span className='fw-semibold'>Lavya</span> admin template
+											<span className='fw-semibold'>vidhyaroute</span> admin
+											template
 										</p>
 										<div className='mt-4'>
 											<Link
@@ -54,7 +55,7 @@ const LogoutCover = () => {
 
 							<div className='text-white text-center mt-4'>
 								<p className='mb-0'>
-									&copy; {new Date().getFullYear()} Lavya. Crafted with{' '}
+									&copy; {new Date().getFullYear()} vidhyaroute. Crafted with{' '}
 									<i className='mdi mdi-heart text-danger'></i> by Themesbrand
 								</p>
 							</div>

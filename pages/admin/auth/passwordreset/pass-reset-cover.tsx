@@ -32,7 +32,9 @@ const PassResetCover = () => {
 								<Card.Body className='p-4 p-sm-5'>
 									<div className='text-center mt-2'>
 										<h5 className='text-primary fs-20'>Forgot Password?</h5>
-										<p className='text-muted mb-4'>Reset password with Lavya</p>
+										<p className='text-muted mb-4'>
+											Reset password with vidhyaroute
+										</p>
 										<div className='display-5 mb-4 text-danger'>
 											<i className='bi bi-envelope'></i>
 										</div>
@@ -82,7 +84,7 @@ const PassResetCover = () => {
 							<div className='text-white text-center mt-4'>
 								<p className='mb-0'>
 									&copy;
-									{new Date().getFullYear()} Lavya. Crafted with{' '}
+									{new Date().getFullYear()} vidhyaroute. Crafted with{' '}
 									<i className='mdi mdi-heart text-danger'></i> by Themesbrand
 								</p>
 							</div>

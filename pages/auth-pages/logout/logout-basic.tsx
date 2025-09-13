@@ -60,9 +60,9 @@ const LogoutBasic = () => {
 													</div>
 													<div className='text-center text-white-75'>
 														<p className='mb-0'>
-															© {new Date().getFullYear()} Lavya. Crafted with{' '}
-															<i className='mdi mdi-heart text-danger'></i> by
-															Themesbrand
+															© {new Date().getFullYear()} vidhyaroute. Crafted
+															with <i className='mdi mdi-heart text-danger'></i>{' '}
+															by Themesbrand
 														</p>
 													</div>
 												</Card.Body>
@@ -79,8 +79,8 @@ const LogoutBasic = () => {
 														<h5 className='fs-18'>You are Logged Out</h5>
 														<p className='text-muted'>
 															Thank you for using{' '}
-															<span className='fw-semibold'>Lavya</span> admin
-															template
+															<span className='fw-semibold'>vidhyaroute</span>{' '}
+															admin template
 														</p>
 														<div className='mt-4'>
 															<Link

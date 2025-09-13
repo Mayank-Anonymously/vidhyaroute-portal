@@ -55,7 +55,8 @@ const LogoutBasic2 = () => {
 										<h5 className='fs-18'>You are Logged Out</h5>
 										<p className='text-muted'>
 											Thank you for using{' '}
-											<span className='fw-semibold'>Lavya</span> admin template
+											<span className='fw-semibold'>vidhyaroute</span> admin
+											template
 										</p>
 										<div className='mt-4'>
 											<Link

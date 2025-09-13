@@ -51,7 +51,9 @@ const SigninBasic2 = () => {
 								<Card.Body className='p-4 p-sm-5 m-lg-4'>
 									<div className='text-center mt-2'>
 										<h5 className='text-primary fs-22'>Welcome Back !</h5>
-										<p className='text-muted'>Sign in to continue to Lavya.</p>
+										<p className='text-muted'>
+											Sign in to continue to vidhyaroute.
+										</p>
 									</div>
 									<div className='p-2 mt-5'>
 										<form action='#'>

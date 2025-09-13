@@ -38,7 +38,7 @@ const Error404Cover = () => {
 
 								<div className='text-white mt-4'>
 									<p className='mb-0'>
-										&copy; {new Date().getFullYear()} Lavya. Crafted with{' '}
+										&copy; {new Date().getFullYear()} vidhyaroute. Crafted with{' '}
 										<i className='mdi mdi-heart text-danger'></i> by Themesbrand
 									</p>
 								</div>

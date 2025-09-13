@@ -35,7 +35,7 @@ const SigninCover = () => {
 
 								<div className='text-white mt-4'>
 									<p className='mb-0'>
-										&copy; {new Date().getFullYear()} Lavya. Crafted with{' '}
+										&copy; {new Date().getFullYear()} vidhyaroute. Crafted with{' '}
 										<i className='mdi mdi-heart text-danger'></i> by Themesbrand
 									</p>
 								</div>
@@ -49,7 +49,9 @@ const SigninCover = () => {
 								<Card.Body className='p-4 p-sm-5 m-lg-2'>
 									<div className='text-center mt-2'>
 										<h5 className='text-primary fs-22'>Welcome Back !</h5>
-										<p className='text-muted'>Sign in to continue to Lavya.</p>
+										<p className='text-muted'>
+											Sign in to continue to vidhyaroute.
+										</p>
 									</div>
 									<div className='p-2 mt-5'>
 										<form action='#'>

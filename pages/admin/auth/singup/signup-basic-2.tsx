@@ -51,7 +51,7 @@ const SingupBasic2 = () => {
 									<div className='text-center mt-2'>
 										<h5 className='text-primary fs-20'>Create New Account</h5>
 										<p className='text-muted'>
-											Get your free Lavya account now
+											Get your free vidhyaroute account now
 										</p>
 									</div>
 									<div className='p-2 mt-5'>
@@ -147,7 +147,7 @@ const SingupBasic2 = () => {
 
 											<div className='mb-4'>
 												<p className='mb-0 fs-12 text-muted fst-italic'>
-													By registering you agree to the Lavya{' '}
+													By registering you agree to the vidhyaroute{' '}
 													<Link
 														href='#'
 														className='text-primary text-decoration-underline fst-normal fw-medium'>

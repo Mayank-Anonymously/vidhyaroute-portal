@@ -1,8 +1,8 @@
 // LOCAL;
-// export const baseURL = "http://192.168.1.2:3202/api/v1";
-// export const imagebaseURL = "http://192.168.1.2:3202/resources/";
+// export const baseURL = "http://192.168.1.10:3202/api/v1";
+// export const imagebaseURL = "http://192.168.1.10:3202/resources/";
 
-// // // // // LIVE;
+// //  LIVE;
 export const baseURL = "https://api.vidhyaroute.com/api/v1";
 export const imagebaseURL = "https://api.vidhyaroute.com/resources/";
 
@@ -147,8 +147,8 @@ export const ADD_NEW_CITY = "/city/add-new-city";
 /* CITY */
 
 /* CONTENT */
-export const GET_ALL_CONTENT = "/pages/all";
-export const ADD_NEW_CONTENT = "/pages/add";
+export const GET_ALL_CONTENT = "/blogs/all";
+export const ADD_NEW_CONTENT = "/blogs/add";
 /* CONTENT */
 
 /* CONTENT */

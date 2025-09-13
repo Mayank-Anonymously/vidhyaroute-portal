@@ -31,7 +31,7 @@ export const AddNewService = (values: any) => async (dispatch: any) => {
     });
 
     const { baseResponse } = resp;
-    if (baseResponse.status === 1) {
+  if (baseResponse.status === 1) {
       Swal.fire({
         title: "Success",
         text: baseResponse.message,

@@ -60,9 +60,9 @@ const SuccessMsgBasic = () => {
 													</div>
 													<div className='text-center text-white-75'>
 														<p className='mb-0'>
-															©{new Date().getFullYear()} Lavya. Crafted with{' '}
-															<i className='mdi mdi-heart text-danger'></i> by
-															Themesbrand
+															©{new Date().getFullYear()} vidhyaroute. Crafted
+															with <i className='mdi mdi-heart text-danger'></i>{' '}
+															by Themesbrand
 														</p>
 													</div>
 												</Card.Body>

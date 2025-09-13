@@ -60,9 +60,9 @@ const SingupBasic = () => {
 													</div>
 													<div className='text-center text-white-75'>
 														<p className='mb-0'>
-															© {new Date().getFullYear()} Lavya. Crafted with{' '}
-															<i className='mdi mdi-heart text-danger'></i> by
-															Themesbrand
+															© {new Date().getFullYear()} vidhyaroute. Crafted
+															with <i className='mdi mdi-heart text-danger'></i>{' '}
+															by Themesbrand
 														</p>
 													</div>
 												</Card.Body>
@@ -76,7 +76,7 @@ const SingupBasic = () => {
 															Create New Account
 														</h5>
 														<p className='text-muted'>
-															Get your free Lavya account now
+															Get your free vidhyaroute account now
 														</p>
 													</div>
 													<div className='p-2 mt-5'>
@@ -151,7 +151,7 @@ const SingupBasic = () => {
 
 															<div className='mb-4'>
 																<p className='mb-0 fs-12 text-muted fst-italic'>
-																	By registering you agree to the Lavya{' '}
+																	By registering you agree to the vidhyaroute{' '}
 																	<Link
 																		href='#'
 																		className='text-primary text-decoration-underline fst-normal fw-medium'>

@@ -55,7 +55,7 @@ const SuccessMsgCover = () => {
 							<div className='text-white text-center mt-5'>
 								<p className='mb-0'>
 									&copy;
-									{new Date().getFullYear()} Lavya. Crafted with{' '}
+									{new Date().getFullYear()} vidhyaroute. Crafted with{' '}
 									<i className='mdi mdi-heart text-danger'></i> by Themesbrand
 								</p>
 							</div>

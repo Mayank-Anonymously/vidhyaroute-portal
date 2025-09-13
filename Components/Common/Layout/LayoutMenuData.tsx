@@ -114,7 +114,7 @@ const Navdata = () => {
 			document.body.classList.add('twocolumn-panel');
 		}
 		if (isCurrentState === 'Components') {
-			Router.push('https://lavya-backend-components.vercel.app/');
+			Router.push('https://vidhyaroute-backend-components.vercel.app/');
 			document.body.classList.add('twocolumn-panel');
 		}
 	}, [isCurrentState, isAuth, isPages, isMultiLevel]);
@@ -140,8 +140,8 @@ const Navdata = () => {
 		},
 		{
 			id: 'blog',
-			label: 'blog',
-			icon: 'bi bi-substack',
+			label: 'Blog',
+			icon: 'bi bi-stack',
 			link: '/#',
 			click: function (e: any) {
 				e.preventDefault();
@@ -336,7 +336,7 @@ const Navdata = () => {
 		//   label: "Components",
 		//   icon: "bi bi-layers",
 		//   isBlankLink: true,
-		//   link: "https://lavya-backend-components.vercel.app/",
+		//   link: "https://vidhyaroute-backend-components.vercel.app/",
 		//   click: function (e: any) {
 		//     e.preventDefault();
 		//     setIsCurrentState("Components");

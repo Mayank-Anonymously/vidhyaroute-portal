@@ -50,7 +50,9 @@ const PassResetBasic2 = () => {
 								<Card.Body className='p-4 p-sm-5 m-lg-4'>
 									<div className='text-center mt-2'>
 										<h5 className='text-primary fs-20'>Forgot Password?</h5>
-										<p className='text-muted mb-4'>Reset password with Lavya</p>
+										<p className='text-muted mb-4'>
+											Reset password with vidhyaroute
+										</p>
 										<div className='display-5 mb-4 text-danger'>
 											<i className='bi bi-envelope'></i>
 										</div>

@@ -60,9 +60,9 @@ const PassResetBasic = () => {
 													</div>
 													<div className='text-center text-white-75'>
 														<p className='mb-0'>
-															© {new Date().getFullYear()} Lavya. Crafted with{' '}
-															<i className='mdi mdi-heart text-danger'></i> by
-															Themesbrand{' '}
+															© {new Date().getFullYear()} vidhyaroute. Crafted
+															with <i className='mdi mdi-heart text-danger'></i>{' '}
+															by Themesbrand{' '}
 														</p>
 													</div>
 												</Card.Body>
@@ -76,7 +76,7 @@ const PassResetBasic = () => {
 															Forgot Password?
 														</h5>
 														<p className='text-muted mb-4'>
-															Reset password with Lavya
+															Reset password with vidhyaroute
 														</p>
 														<div className='display-5 mb-4 text-danger'>
 															<i className='bi bi-envelope'></i>

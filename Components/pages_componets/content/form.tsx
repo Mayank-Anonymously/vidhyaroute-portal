@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Col, Row, Form, Button } from 'react-bootstrap';
-import { AddNewPage } from 'Components/slices/content/thunk';
+import { useDropzone } from 'react-dropzone';
+import { AddNewBlogs } from 'Components/slices/content/thunk';
 
 const DynamicPageForm = () => {
 	const dispatch: any = useDispatch();
@@ -14,6 +15,19 @@ const DynamicPageForm = () => {
 	const { category } = useSelector((state: any) => ({
 		category: state.CategorySlice.categorydata,
 	}));
+
+	// Dropzone handler for single image
+	const onDrop = useCallback((acceptedFiles: any) => {
+		if (acceptedFiles.length > 0) {
+			formik.setFieldValue('image', acceptedFiles[0]);
+		}
+	}, []);
+
+	const { getRootProps, getInputProps, isDragActive } = useDropzone({
+		onDrop,
+		accept: { 'image/*': [] },
+		multiple: false,
+	});
 
 	useEffect(() => {
 		editorRef.current = {
@@ -34,6 +48,7 @@ const DynamicPageForm = () => {
 			page_image_tag: '',
 			title: '',
 			page_content: '',
+			image: null,
 		},
 		validationSchema: Yup.object({
 			meta_title: Yup.string().required('Meta title is required.'),
@@ -43,9 +58,10 @@ const DynamicPageForm = () => {
 			page_image_tag: Yup.string().required('Page image tag is required.'),
 			title: Yup.string().required('Title is required.'),
 			page_content: Yup.string().required('Page content is required.'),
+			image: Yup.mixed().required('Image is required.'),
 		}),
 		onSubmit: (values) => {
-			dispatch(AddNewPage(values));
+			dispatch(AddNewBlogs(values));
 			formik.resetForm();
 		},
 	});
@@ -62,6 +78,43 @@ const DynamicPageForm = () => {
 						formik.handleSubmit();
 						return false;
 					}}>
+					{/* Upload Image Section */}
+					<Row className='mb-3'>
+						<Col md={6}>
+							<Form.Label>Upload Image</Form.Label>
+							<div
+								{...getRootProps()}
+								className='border p-3 text-center'
+								style={{ cursor: 'pointer' }}>
+								<input {...getInputProps()} />
+								<p>
+									{isDragActive
+										? 'Drop the image here ...'
+										: "Drag 'n' drop an image here, or click to select"}
+								</p>
+							</div>
+							{formik.touched.image && formik.errors.image && (
+								<div className='text-danger mt-1'>{formik.errors.image}</div>
+							)}
+
+							{formik.values.image && (
+								<div className='mt-2'>
+									<img
+										src={
+											formik.values.image instanceof File
+												? URL.createObjectURL(formik.values.image)
+												: formik.values.image
+										}
+										alt='preview'
+										className='img-thumbnail'
+										width='150'
+									/>
+								</div>
+							)}
+						</Col>
+					</Row>
+
+					{/* Meta Fields */}
 					<Row className='mb-3'>
 						<Col>
 							<Form.Label>Meta Title</Form.Label>
