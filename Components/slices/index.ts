@@ -38,6 +38,8 @@ import bannerSlices from './banner/reducer';
 import userVacationsSlice from './user_vacations/reducer'
 import offerHeadingSlices from './offer_heading/reducer'
 import country from "./countrySlice/reducer"
+import querySlice from "./query/reducer"
+
 const combinedReducer = combineReducers({
   Layout: LayoutReducer,
   Calendar: calendarSlice,
@@ -66,7 +68,8 @@ const combinedReducer = combineReducers({
   silder:sliderSlices,
   uservacations:userVacationsSlice,
   offerheadings:offerHeadingSlices,
-  countries : country
+  countries : country,
+    queries : querySlice
 });
 
 const reducer = (state: any, action: AnyAction) => {

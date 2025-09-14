@@ -164,3 +164,8 @@ export const ADD_NEW_COUNTRY = "/countries/add";
 export const GET_ALL_SERVICE = "/services/all";
 export const ADD_NEW_SERVICE = "/services/add";
 /* CONTENT */
+
+
+/* CONTENT */
+export const GET_ALL_QUERIES = "/query/get-all-queries";
+/* CONTENT */

@@ -1,12 +1,14 @@
 import React, { ReactElement } from 'react';
 import Head from 'next/head';
 import Layout from '@common/Layout';
+import CountryForm from 'Components/pages_componets/countries/form';
 import QueryTable from 'Components/pages_componets/query/table';
-const Dashboard = () => {
+
+const index = () => {
 	return (
 		<React.Fragment>
 			<Head>
-				<title>Dashboard | Vidhyaroute -Admin </title>
+				<title>Add Country | Vidhyaroute -Admin </title>
 			</Head>
 			<div className='page-content'>
 				<QueryTable />
@@ -15,8 +17,7 @@ const Dashboard = () => {
 	);
 };
 
-Dashboard.getLayout = (page: ReactElement) => {
+index.getLayout = (page: ReactElement) => {
 	return <Layout>{page}</Layout>;
 };
-
-export default Dashboard;
+export default index;
